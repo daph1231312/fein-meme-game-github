@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dunui8hp3d8uw"]
+[gd_scene load_steps=6 format=3 uid="uid://dunui8hp3d8uw"]
 
 [ext_resource type="PackedScene" uid="uid://c6t1q8ccbqs6n" path="res://Player/player.tscn" id="1_pg2wg"]
+[ext_resource type="Script" uid="uid://cowylnk763oem" path="res://TestScene/multiplayer_spawner.gd" id="2_jtt75"]
+[ext_resource type="PackedScene" uid="uid://1cdgom1634g" path="res://TestScene/test_scene_ui.tscn" id="3_udmxp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jtt75"]
 size = Vector3(50, 0.2, 50)
@@ -12,6 +14,14 @@ size = Vector3(50, 0.2, 50)
 
 [node name="Floor" type="RigidBody3D" parent="."]
 disable_mode = 1
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 0.001
+gravity_scale = 0.0
 
 [node name="FloorCollider" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_jtt75")
@@ -19,8 +29,16 @@ shape = SubResource("BoxShape3D_jtt75")
 [node name="FloorMesh" type="MeshInstance3D" parent="Floor"]
 mesh = SubResource("BoxMesh_udmxp")
 
-[node name="Player" parent="." instance=ExtResource("1_pg2wg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.170978, 0)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Sunlight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.2425823, 0.9701308, -7.223603e-09, -0.87686837, 0.21926194, 0.42781538, 0.41503686, -0.10378044, 0.9038662, 0, 12.823019, 0)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://c6t1q8ccbqs6n")
+spawn_path = NodePath("..")
+script = ExtResource("2_jtt75")
+networkPlayer = ExtResource("1_pg2wg")
+
+[node name="TestSceneUi" parent="." instance=ExtResource("3_udmxp")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.008778822, 0.9999615, 0, -0.9999615, -0.008778822, 0, 42.604507, 0)

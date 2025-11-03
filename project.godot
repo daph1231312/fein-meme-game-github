@@ -13,3 +13,7 @@ config_version=5
 config/name="Fein Meme"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Networking="*res://Scripts/networking.gd"

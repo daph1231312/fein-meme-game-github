@@ -16,4 +16,5 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Networking="*res://Scripts/networking.gd"
+Discovery="*res://Scripts/Discovery.gd"
+ChatNet="*res://Scripts/ChatNet.gd"

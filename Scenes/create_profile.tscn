@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcacbr0181tgg"]
+
+[ext_resource type="Texture2D" uid="uid://cmbb2p2o51518" path="res://Images/avatar-default.svg" id="1_746k5"]
+[ext_resource type="Script" uid="uid://dyajqkufdih4p" path="res://Scripts/create_profile.gd" id="1_ittxr"]
+
+[node name="CreateProfile" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ittxr")
+
+[node name="CenterContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Container" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_stretch_ratio = 5.0
+alignment = 1
+
+[node name="Username" type="LineEdit" parent="CenterContainer/Container"]
+layout_mode = 2
+placeholder_text = "Enter Your Username"
+max_length = 18
+emoji_menu_enabled = false
+
+[node name="ProfilePictureContainer" type="HBoxContainer" parent="CenterContainer/Container"]
+layout_mode = 2
+
+[node name="ProfilePicture" type="TextureRect" parent="CenterContainer/Container/ProfilePictureContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_746k5")
+expand_mode = 1
+
+[node name="Add" type="Button" parent="CenterContainer/Container/ProfilePictureContainer"]
+layout_mode = 2
+text = "Add Avatar"
+
+[node name="Delete" type="Button" parent="CenterContainer/Container/ProfilePictureContainer"]
+layout_mode = 2
+text = "Reset Avatar"
+
+[node name="Label" type="Label" parent="CenterContainer/Container/ProfilePictureContainer"]
+layout_mode = 2
+text = "You can use default avatar."
+
+[node name="Create" type="Button" parent="CenterContainer/Container"]
+layout_mode = 2
+text = "Create Profile"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+
+[connection signal="pressed" from="CenterContainer/Container/ProfilePictureContainer/Add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="CenterContainer/Container/ProfilePictureContainer/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="CenterContainer/Container/Create" to="." method="_on_create_pressed"]

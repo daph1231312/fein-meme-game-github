@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://rtkvykdriclh"]
+
+[ext_resource type="Script" uid="uid://edqlqw605q6n" path="res://Scripts/lobby_manager.gd" id="1_l0scu"]
+
+[node name="LobbyManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l0scu")
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Lobby Menu"
+
+[node name="RoomList" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RoomInfo" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RoomName" type="LineEdit" parent="RoomInfo"]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Create" type="Button" parent="Buttons"]
+layout_mode = 2
+
+[node name="Refresh" type="Button" parent="Buttons"]
+layout_mode = 2
+
+[node name="Status" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AdvTimer" type="Timer" parent="."]
